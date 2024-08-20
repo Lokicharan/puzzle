@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steps to Solve Puzzle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #steps-list {
+            margin: 20px 0;
+        }
+        .step {
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .step:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Steps to Solve Puzzle</h1>
+    <div id="steps-list"></div>
+    <a href="index.html">Back to Puzzle</a>
+
+    <script>
+        // Retrieve steps from localStorage
+        const steps = JSON.parse(localStorage.getItem('puzzleSteps')) || [];
+        const stepsList = document.getElementById('steps-list');
+
+        if (steps.length === 0) {
+            stepsList.innerHTML = "<p>No steps available.</p>";
+        } else {
+            steps.forEach((step, index) => {
+                const stepDiv = document.createElement('div');
+                stepDiv.classList.add('step');
+                stepDiv.textContent = `Step ${index + 1}: ${step}`;
+                stepsList.appendChild(stepDiv);
+            });
+        }
+    </script>
+</body>
+</html>
